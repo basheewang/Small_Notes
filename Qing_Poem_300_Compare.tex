@@ -1,0 +1,136 @@
+\documentclass[UTF8, scheme=chinese]{ctexart}
+
+\usepackage{pdflscape}% 引入横向排版宏包
+
+\usepackage[margin=0.5cm]{geometry}
+
+\usepackage{xeCJK}
+\xeCJKsetup{
+  AutoFallBack = true,
+  AutoFakeBold = true,
+  PunctStyle = kaiming,
+  CheckFullRight = true,
+  CheckSingle = false,
+  AllowBreakBetweenPuncts = true,
+  CJKmath = true,
+}
+
+% 完整的中文章节格式设置
+\ctexset{
+  % 章设置
+  % chapter = {
+  % format = \huge\bfseries\centering,
+  % nameformat = {},
+  % titleformat = {},
+  % name = {第,章},
+  % number = \chinese{chapter},
+  % aftername = \quad,
+  % beforeskip = 20pt,
+  % afterskip = 20pt,
+  % },
+  %   节设置
+  section = {
+    format = \Large\bfseries,
+    nameformat = {},
+    titleformat = {},
+    name = {第,节},
+    number = \chinese{section},
+    aftername = \quad,
+  },
+  % 小节设置
+  subsection = {
+    format = \large\bfseries,
+    nameformat = {},
+    titleformat = {},
+    name = {第,小节},
+    number = \chinese{subsection},
+    aftername = \quad,
+  },
+  % 子小节设置
+  subsubsection = {
+    format = \normalsize\bfseries,
+    nameformat = {},
+    titleformat = {},
+    name = {第,子小节},
+    number = \chinese{subsubsection},
+    aftername = \quad,
+  }
+}
+
+\xeCJKDeclareSubCJKBlock{Ext-A}{ "3400 -> "4DB5 }
+\xeCJKDeclareSubCJKBlock{Ext-B}{ "20000 -> "2A6DF }
+\xeCJKDeclareSubCJKBlock{CircNum}{ "2460 -> "2473 }
+\xeCJKDeclareSubCJKBlock{Symbols}{ "2700 -> "27FF }
+
+\setCJKmainfont[%
+BoldFont={FZYouHei_GBK 513B},   %
+% Ext-A={仓耳今楷05-W04},
+Ext-B={SimSun-ExtB},
+CircNum={IosevkaTerm NFM},
+Symbols={IosevkaTerm NFM}
+]
+{NSimSun}
+\newCJKfontfamily[li]\hmls{FZZJ-HMLSJF}
+\newCJKfontfamily[kai]\fzxk{FZNewKai-Z03}
+\newCJKfontfamily[song]\ssb{SimSun-ExtB}
+
+\usepackage{xcolor}
+\usepackage{pifont}
+
+\usepackage{tikz}
+
+
+% 引入颜色宏包（可选，用于让中文标注颜色变浅一点）
+\usepackage{xpinyin}
+
+% 记得将asmmath放在前面
+\usepackage{amsmath}
+% \usepackage{mathabx}
+% \usepackage{fdsymbol}
+
+% 更多功能的itemize以及表格
+\usepackage{enumitem}
+
+% 定义名为 descnum 的新环境
+\newlist{descnum}{description}{1}
+\setlist[descnum]{
+  label={\arabic*.},
+  font=\bfseries,
+  leftmargin=2em,
+  before=\stepcounter{section} % 可选：如果希望每章重新计数
+}
+
+\usepackage{tabularray}
+\UseTblrLibrary{varwidth}
+% 1. 修改当前页底部的提示文字 (默认是 Continued on next page)
+\DefTblrTemplate{contfoot-text}{default}{下页继续}
+
+% 2. 修改下一页顶部的提示文字 (默认是 (Continued))
+\DefTblrTemplate{conthead-text}{default}{(续表)}
+
+\usepackage{hyperref}
+% 设置链接颜色，方便在 PDF 中看出哪里可以点击
+\hypersetup{colorlinks=true, linkcolor=blue}
+
+\title{\fzxk {\huge 两版《清诗300首》选诗对比}}
+% \date{2026/04/11}
+
+\begin{document}
+
+\maketitle
+% \tableofcontents
+
+\input{Qing_Poem_300_Compare_sec001}
+\input{Qing_Poem_300_Compare_sec002}
+
+% \input{contents/part000}
+
+\end{document}
+
+% Local Variables:
+% TeX-engine: xetex
+% TeX-master: t
+% End:
+
+% LocalWords:  xetex AutoFallBack AutoFakeBold PunctStyle kaiming CJKmath
+% LocalWords:  CheckFullRight AllowBreakBetweenPuncts ctexset
